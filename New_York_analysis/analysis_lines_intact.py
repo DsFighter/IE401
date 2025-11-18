@@ -47,7 +47,7 @@ class MetroNetworkAnalyzer:
         for feature in data['features']:
             if feature['geometry']['type'] == 'Point':
                 coords = feature['geometry']['coordinates']
-                name = feature['properties']['station_name']
+                name = feature['properties']['name']
                 lines = feature['properties']['lines']
                 
                 # Handle duplicate station names by making unique identifiers
