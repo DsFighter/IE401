@@ -1,0 +1,3647 @@
+{
+  "type": "FeatureCollection",
+  "bbox": [
+    113.816667,
+    22.133333,
+    114.516667,
+    22.583333
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.117852,
+          22.373658
+        ]
+      },
+      "properties": {
+        "name": "Tsuen Wan",
+        "ref": "TSW",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.125116,
+          22.3708019
+        ]
+      },
+      "properties": {
+        "name": "Tai Wo Hau",
+        "ref": "TWH",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.131206,
+          22.3630265
+        ]
+      },
+      "properties": {
+        "name": "Kwai Hing",
+        "ref": "KWH",
+        "wikidata": "Q839727",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1278558,
+          22.3568855
+        ]
+      },
+      "properties": {
+        "name": "Kwai Fong",
+        "ref": "KWF",
+        "wikidata": "Q838803",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1262633,
+          22.3484986
+        ]
+      },
+      "properties": {
+        "name": "Lai King",
+        "ref": "LAK",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1392054,
+          22.3379838
+        ]
+      },
+      "properties": {
+        "name": "Mei Foo",
+        "ref": "MEF",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1483992,
+          22.3374427
+        ]
+      },
+      "properties": {
+        "name": "Lai Chi Kok",
+        "ref": "LCK",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.156174,
+          22.3355274
+        ]
+      },
+      "properties": {
+        "name": "Cheung Sha Wan",
+        "ref": "CSW",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1624588,
+          22.3306332
+        ]
+      },
+      "properties": {
+        "name": "Sham Shui Po",
+        "ref": "SSP",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1682327,
+          22.3244406
+        ]
+      },
+      "properties": {
+        "name": "Prince Edward",
+        "ref": "PRE",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1693132,
+          22.3192386
+        ]
+      },
+      "properties": {
+        "name": "Mong Kok",
+        "ref": "MOK",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707361,
+          22.3130841
+        ]
+      },
+      "properties": {
+        "name": "Yau Ma Tei",
+        "ref": "YMT",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1717821,
+          22.3051088
+        ]
+      },
+      "properties": {
+        "name": "Jordan",
+        "ref": "JOR",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1722971,
+          22.2971822
+        ]
+      },
+      "properties": {
+        "name": "Tsim Sha Tsui",
+        "ref": "TST",
+        "lines": [
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1653386,
+          22.2793195
+        ]
+      },
+      "properties": {
+        "name": "Admiralty",
+        "ref": "ADM",
+        "lines": [
+          "南港島綫 south island line",
+          "港鐵東鐵綫 mtr east rail line",
+          "港鐵港島綫 mtr island line",
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1593311,
+          22.2815012
+        ]
+      },
+      "properties": {
+        "name": "Central",
+        "ref": "CEN",
+        "lines": [
+          "港鐵港島綫 mtr island line",
+          "港鐵荃灣綫 mtr tsuen wan line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2005605,
+          22.2904837
+        ]
+      },
+      "properties": {
+        "name": "North Point",
+        "ref": "NOP",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line",
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2090338,
+          22.2882652
+        ]
+      },
+      "properties": {
+        "name": "Quarry Bay",
+        "ref": "QUB",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line",
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2370927,
+          22.2977718
+        ]
+      },
+      "properties": {
+        "name": "Yau Tong",
+        "ref": "YAT",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2523284,
+          22.3041145
+        ]
+      },
+      "properties": {
+        "name": "Tiu Keng Leng",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2599465,
+          22.3074422
+        ]
+      },
+      "properties": {
+        "name": "Tseung Kwan O",
+        "ref": "TKO",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2644187,
+          22.3155608
+        ]
+      },
+      "properties": {
+        "name": "Hang Hau",
+        "ref": "HAH",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2579671,
+          22.3225369
+        ]
+      },
+      "properties": {
+        "name": "Po Lam",
+        "ref": "POA",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2328977,
+          22.3066758
+        ]
+      },
+      "properties": {
+        "name": "Lam Tin",
+        "ref": "LAT",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2263795,
+          22.3121569
+        ]
+      },
+      "properties": {
+        "name": "Kwun Tong",
+        "ref": "KWT",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2191447,
+          22.3153219
+        ]
+      },
+      "properties": {
+        "name": "Ngau Tau Kok",
+        "ref": "NTK",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2140058,
+          22.323379
+        ]
+      },
+      "properties": {
+        "name": "Kowloon Bay",
+        "ref": "KOB",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.208531,
+          22.335285
+        ]
+      },
+      "properties": {
+        "name": "Choi Hung",
+        "ref": "CHH",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2015891,
+          22.3399613
+        ]
+      },
+      "properties": {
+        "name": "Diamond Hill",
+        "ref": "DIH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1943553,
+          22.3415832
+        ]
+      },
+      "properties": {
+        "name": "Wong Tai Sin",
+        "ref": "WTS",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1870218,
+          22.3379446
+        ]
+      },
+      "properties": {
+        "name": "Lok Fu",
+        "ref": "LOF",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1772586,
+          22.3367533
+        ]
+      },
+      "properties": {
+        "name": "Kowloon Tong",
+        "ref": "KOT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1688604,
+          22.3318067
+        ]
+      },
+      "properties": {
+        "name": "Shek Kip Mei",
+        "ref": "SKM",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1826762,
+          22.3092386
+        ]
+      },
+      "properties": {
+        "name": "Ho Man Tin",
+        "ref": "HOM",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1896461,
+          22.304901
+        ]
+      },
+      "properties": {
+        "name": "Whampoa",
+        "ref": "WHA",
+        "lines": [
+          "港鐵觀塘綫 mtr kwun tong line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.065664,
+          22.5145627
+        ]
+      },
+      "properties": {
+        "name": "Lok Ma Chau",
+        "ref": "LMC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1280755,
+          22.5011468
+        ]
+      },
+      "properties": {
+        "name": "Sheung Shui",
+        "ref": "SHS",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1386939,
+          22.4920708
+        ]
+      },
+      "properties": {
+        "name": "Fanling",
+        "ref": "FAN",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.161234,
+          22.4509916
+        ]
+      },
+      "properties": {
+        "name": "Tai Wo",
+        "ref": "TWO",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707875,
+          22.4447575
+        ]
+      },
+      "properties": {
+        "name": "Tai Po Market",
+        "ref": "TAP",
+        "wikidata": "Q996781",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2100545,
+          22.4133852
+        ]
+      },
+      "properties": {
+        "name": "University",
+        "ref": "UNI",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.198366,
+          22.3953371
+        ]
+      },
+      "properties": {
+        "name": "Fo Tan",
+        "ref": "FOT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1876419,
+          22.3828402
+        ]
+      },
+      "properties": {
+        "name": "Sha Tin",
+        "ref": "SHT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1785062,
+          22.3731177
+        ]
+      },
+      "properties": {
+        "name": "Tai Wai",
+        "ref": "TAW",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1725869,
+          22.3217126
+        ]
+      },
+      "properties": {
+        "name": "Mong Kok East",
+        "ref": "MKK",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1823066,
+          22.302726
+        ]
+      },
+      "properties": {
+        "name": "Hung Hom",
+        "ref": "HUH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1757015,
+          22.2816654
+        ]
+      },
+      "properties": {
+        "name": "Exhibition Centre",
+        "ref": "EXC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1135146,
+          22.52818
+        ]
+      },
+      "properties": {
+        "name": "Lo Wu",
+        "ref": "LOW",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2029649,
+          22.4004416
+        ]
+      },
+      "properties": {
+        "name": "Racecourse",
+        "ref": "RAC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2370517,
+          22.2646033
+        ]
+      },
+      "properties": {
+        "name": "Chai Wan",
+        "ref": "CHW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2397239,
+          22.276619
+        ]
+      },
+      "properties": {
+        "name": "Heng Fa Chuen",
+        "ref": "HFC",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2288177,
+          22.2790834
+        ]
+      },
+      "properties": {
+        "name": "Shau Kei Wan",
+        "ref": "SKW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2222818,
+          22.2816237
+        ]
+      },
+      "properties": {
+        "name": "Sai Wan Ho",
+        "ref": "SWH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2163547,
+          22.2844656
+        ]
+      },
+      "properties": {
+        "name": "Tai Koo",
+        "ref": "TAK",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1934716,
+          22.2875065
+        ]
+      },
+      "properties": {
+        "name": "Fortress Hill",
+        "ref": "FOH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1920333,
+          22.2821958
+        ]
+      },
+      "properties": {
+        "name": "Tin Hau",
+        "ref": "TIH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1840143,
+          22.2801023
+        ]
+      },
+      "properties": {
+        "name": "Causeway Bay",
+        "ref": "CAB",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1729643,
+          22.2775557
+        ]
+      },
+      "properties": {
+        "name": "Wan Chai",
+        "ref": "WAC",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1521488,
+          22.2865033
+        ]
+      },
+      "properties": {
+        "name": "Sheung Wan",
+        "ref": "SHW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1427807,
+          22.2854233
+        ]
+      },
+      "properties": {
+        "name": "Sai Ying Pun",
+        "ref": "SYP",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1354563,
+          22.2839642
+        ]
+      },
+      "properties": {
+        "name": "HKU",
+        "ref": "HKU",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.128455,
+          22.2812239
+        ]
+      },
+      "properties": {
+        "name": "Kennedy Town",
+        "ref": "KET",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0290377,
+          22.3317036
+        ]
+      },
+      "properties": {
+        "name": "Sunny Bay",
+        "ref": "SUN",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵迪士尼綫 mtr disneyland resort line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0451419,
+          22.3155384
+        ]
+      },
+      "properties": {
+        "name": "Disneyland Resort",
+        "ref": "DIS",
+        "lines": [
+          "港鐵迪士尼綫 mtr disneyland resort line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9422192,
+          22.3219972
+        ]
+      },
+      "properties": {
+        "name": "AsiaWorld-Expo",
+        "lines": [
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9366406,
+          22.3158213
+        ]
+      },
+      "properties": {
+        "name": "Airport",
+        "ref": "AIR",
+        "lines": [
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1074211,
+          22.358341
+        ]
+      },
+      "properties": {
+        "name": "Tsing Yi",
+        "ref": "TSY",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1616488,
+          22.3049115
+        ]
+      },
+      "properties": {
+        "name": "Kowloon",
+        "ref": "KOW",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1583655,
+          22.2850161
+        ]
+      },
+      "properties": {
+        "name": "Hong Kong",
+        "ref": "HOK",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9413221,
+          22.289278
+        ]
+      },
+      "properties": {
+        "name": "Tung Chung",
+        "ref": "TUC",
+        "lines": [
+          "東涌綫 tung chung line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1536861,
+          22.3263889
+        ]
+      },
+      "properties": {
+        "name": "Nam Cheong",
+        "ref": "NAC",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1604114,
+          22.317703
+        ]
+      },
+      "properties": {
+        "name": "Olympic",
+        "ref": "OLY",
+        "lines": [
+          "東涌綫 tung chung line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1667055,
+          22.3042568
+        ]
+      },
+      "properties": {
+        "name": "Austin",
+        "ref": "AUS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.174562,
+          22.2953745
+        ]
+      },
+      "properties": {
+        "name": "East Tsim Sha Tsui",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1875853,
+          22.3169878
+        ]
+      },
+      "properties": {
+        "name": "To Kwa Wan",
+        "ref": "TKW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1914117,
+          22.32578
+        ]
+      },
+      "properties": {
+        "name": "Sung Wong Toi",
+        "ref": "SWT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1993964,
+          22.3302386
+        ]
+      },
+      "properties": {
+        "name": "Kai Tak",
+        "ref": "KAT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707728,
+          22.3638076
+        ]
+      },
+      "properties": {
+        "name": "Hin Keng",
+        "ref": "HIK",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.186095,
+          22.374738
+        ]
+      },
+      "properties": {
+        "name": "Che Kung Temple",
+        "ref": "CKT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.194839,
+          22.3768367
+        ]
+      },
+      "properties": {
+        "name": "Sha Tin Wai",
+        "ref": "STW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.203784,
+          22.3830131
+        ]
+      },
+      "properties": {
+        "name": "City One",
+        "ref": "CIO",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2085474,
+          22.3877892
+        ]
+      },
+      "properties": {
+        "name": "Shek Mun",
+        "ref": "SHM",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.222844,
+          22.4084544
+        ]
+      },
+      "properties": {
+        "name": "Tai Shui Hang",
+        "ref": "TSH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2259505,
+          22.4178164
+        ]
+      },
+      "properties": {
+        "name": "Heng On",
+        "ref": "HEO",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2318125,
+          22.4247822
+        ]
+      },
+      "properties": {
+        "name": "Ma On Shan",
+        "ref": "MOS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2438864,
+          22.4290802
+        ]
+      },
+      "properties": {
+        "name": "Wu Kai Sha",
+        "ref": "WKS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2687081,
+          22.2956053
+        ]
+      },
+      "properties": {
+        "name": "LOHAS Park",
+        "ref": "LHP",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.174374,
+          22.2486575
+        ]
+      },
+      "properties": {
+        "name": "Ocean Park",
+        "ref": "OCP",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1675294,
+          22.2478045
+        ]
+      },
+      "properties": {
+        "name": "Wong Chuk Hang",
+        "ref": "WCH",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1561054,
+          22.2418706
+        ]
+      },
+      "properties": {
+        "name": "Lei Tung",
+        "ref": "LET",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.149089,
+          22.2423467
+        ]
+      },
+      "properties": {
+        "name": "South Horizons",
+        "ref": "SOH",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.065664,
+          22.5145627
+        ]
+      },
+      "properties": {
+        "name": "Lok Ma Chau",
+        "ref": "LMC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1280755,
+          22.5011468
+        ]
+      },
+      "properties": {
+        "name": "Sheung Shui",
+        "ref": "SHS",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1386939,
+          22.4920708
+        ]
+      },
+      "properties": {
+        "name": "Fanling",
+        "ref": "FAN",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.161234,
+          22.4509916
+        ]
+      },
+      "properties": {
+        "name": "Tai Wo",
+        "ref": "TWO",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707875,
+          22.4447575
+        ]
+      },
+      "properties": {
+        "name": "Tai Po Market",
+        "ref": "TAP",
+        "wikidata": "Q996781",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2100545,
+          22.4133852
+        ]
+      },
+      "properties": {
+        "name": "University",
+        "ref": "UNI",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.198366,
+          22.3953371
+        ]
+      },
+      "properties": {
+        "name": "Fo Tan",
+        "ref": "FOT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1876419,
+          22.3828402
+        ]
+      },
+      "properties": {
+        "name": "Sha Tin",
+        "ref": "SHT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1785062,
+          22.3731177
+        ]
+      },
+      "properties": {
+        "name": "Tai Wai",
+        "ref": "TAW",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1725869,
+          22.3217126
+        ]
+      },
+      "properties": {
+        "name": "Mong Kok East",
+        "ref": "MKK",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1823066,
+          22.302726
+        ]
+      },
+      "properties": {
+        "name": "Hung Hom",
+        "ref": "HUH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1757015,
+          22.2816654
+        ]
+      },
+      "properties": {
+        "name": "Exhibition Centre",
+        "ref": "EXC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1135146,
+          22.52818
+        ]
+      },
+      "properties": {
+        "name": "Lo Wu",
+        "ref": "LOW",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2029649,
+          22.4004416
+        ]
+      },
+      "properties": {
+        "name": "Racecourse",
+        "ref": "RAC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2370517,
+          22.2646033
+        ]
+      },
+      "properties": {
+        "name": "Chai Wan",
+        "ref": "CHW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2397239,
+          22.276619
+        ]
+      },
+      "properties": {
+        "name": "Heng Fa Chuen",
+        "ref": "HFC",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2288177,
+          22.2790834
+        ]
+      },
+      "properties": {
+        "name": "Shau Kei Wan",
+        "ref": "SKW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2222818,
+          22.2816237
+        ]
+      },
+      "properties": {
+        "name": "Sai Wan Ho",
+        "ref": "SWH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2163547,
+          22.2844656
+        ]
+      },
+      "properties": {
+        "name": "Tai Koo",
+        "ref": "TAK",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1934716,
+          22.2875065
+        ]
+      },
+      "properties": {
+        "name": "Fortress Hill",
+        "ref": "FOH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1920333,
+          22.2821958
+        ]
+      },
+      "properties": {
+        "name": "Tin Hau",
+        "ref": "TIH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1840143,
+          22.2801023
+        ]
+      },
+      "properties": {
+        "name": "Causeway Bay",
+        "ref": "CAB",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1729643,
+          22.2775557
+        ]
+      },
+      "properties": {
+        "name": "Wan Chai",
+        "ref": "WAC",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1521488,
+          22.2865033
+        ]
+      },
+      "properties": {
+        "name": "Sheung Wan",
+        "ref": "SHW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1427807,
+          22.2854233
+        ]
+      },
+      "properties": {
+        "name": "Sai Ying Pun",
+        "ref": "SYP",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1354563,
+          22.2839642
+        ]
+      },
+      "properties": {
+        "name": "HKU",
+        "ref": "HKU",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.128455,
+          22.2812239
+        ]
+      },
+      "properties": {
+        "name": "Kennedy Town",
+        "ref": "KET",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0290377,
+          22.3317036
+        ]
+      },
+      "properties": {
+        "name": "Sunny Bay",
+        "ref": "SUN",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵迪士尼綫 mtr disneyland resort line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0451419,
+          22.3155384
+        ]
+      },
+      "properties": {
+        "name": "Disneyland Resort",
+        "ref": "DIS",
+        "lines": [
+          "港鐵迪士尼綫 mtr disneyland resort line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9422192,
+          22.3219972
+        ]
+      },
+      "properties": {
+        "name": "AsiaWorld-Expo",
+        "lines": [
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9366406,
+          22.3158213
+        ]
+      },
+      "properties": {
+        "name": "Airport",
+        "ref": "AIR",
+        "lines": [
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1074211,
+          22.358341
+        ]
+      },
+      "properties": {
+        "name": "Tsing Yi",
+        "ref": "TSY",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1616488,
+          22.3049115
+        ]
+      },
+      "properties": {
+        "name": "Kowloon",
+        "ref": "KOW",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1583655,
+          22.2850161
+        ]
+      },
+      "properties": {
+        "name": "Hong Kong",
+        "ref": "HOK",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9413221,
+          22.289278
+        ]
+      },
+      "properties": {
+        "name": "Tung Chung",
+        "ref": "TUC",
+        "lines": [
+          "東涌綫 tung chung line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1536861,
+          22.3263889
+        ]
+      },
+      "properties": {
+        "name": "Nam Cheong",
+        "ref": "NAC",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1604114,
+          22.317703
+        ]
+      },
+      "properties": {
+        "name": "Olympic",
+        "ref": "OLY",
+        "lines": [
+          "東涌綫 tung chung line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1667055,
+          22.3042568
+        ]
+      },
+      "properties": {
+        "name": "Austin",
+        "ref": "AUS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.174562,
+          22.2953745
+        ]
+      },
+      "properties": {
+        "name": "East Tsim Sha Tsui",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1875853,
+          22.3169878
+        ]
+      },
+      "properties": {
+        "name": "To Kwa Wan",
+        "ref": "TKW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1914117,
+          22.32578
+        ]
+      },
+      "properties": {
+        "name": "Sung Wong Toi",
+        "ref": "SWT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1993964,
+          22.3302386
+        ]
+      },
+      "properties": {
+        "name": "Kai Tak",
+        "ref": "KAT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707728,
+          22.3638076
+        ]
+      },
+      "properties": {
+        "name": "Hin Keng",
+        "ref": "HIK",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.186095,
+          22.374738
+        ]
+      },
+      "properties": {
+        "name": "Che Kung Temple",
+        "ref": "CKT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.194839,
+          22.3768367
+        ]
+      },
+      "properties": {
+        "name": "Sha Tin Wai",
+        "ref": "STW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.203784,
+          22.3830131
+        ]
+      },
+      "properties": {
+        "name": "City One",
+        "ref": "CIO",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2085474,
+          22.3877892
+        ]
+      },
+      "properties": {
+        "name": "Shek Mun",
+        "ref": "SHM",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.222844,
+          22.4084544
+        ]
+      },
+      "properties": {
+        "name": "Tai Shui Hang",
+        "ref": "TSH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2259505,
+          22.4178164
+        ]
+      },
+      "properties": {
+        "name": "Heng On",
+        "ref": "HEO",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2318125,
+          22.4247822
+        ]
+      },
+      "properties": {
+        "name": "Ma On Shan",
+        "ref": "MOS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2438864,
+          22.4290802
+        ]
+      },
+      "properties": {
+        "name": "Wu Kai Sha",
+        "ref": "WKS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2687081,
+          22.2956053
+        ]
+      },
+      "properties": {
+        "name": "LOHAS Park",
+        "ref": "LHP",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.174374,
+          22.2486575
+        ]
+      },
+      "properties": {
+        "name": "Ocean Park",
+        "ref": "OCP",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1675294,
+          22.2478045
+        ]
+      },
+      "properties": {
+        "name": "Wong Chuk Hang",
+        "ref": "WCH",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1561054,
+          22.2418706
+        ]
+      },
+      "properties": {
+        "name": "Lei Tung",
+        "ref": "LET",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.149089,
+          22.2423467
+        ]
+      },
+      "properties": {
+        "name": "South Horizons",
+        "ref": "SOH",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.065664,
+          22.5145627
+        ]
+      },
+      "properties": {
+        "name": "Lok Ma Chau",
+        "ref": "LMC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1280755,
+          22.5011468
+        ]
+      },
+      "properties": {
+        "name": "Sheung Shui",
+        "ref": "SHS",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1386939,
+          22.4920708
+        ]
+      },
+      "properties": {
+        "name": "Fanling",
+        "ref": "FAN",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.161234,
+          22.4509916
+        ]
+      },
+      "properties": {
+        "name": "Tai Wo",
+        "ref": "TWO",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707875,
+          22.4447575
+        ]
+      },
+      "properties": {
+        "name": "Tai Po Market",
+        "ref": "TAP",
+        "wikidata": "Q996781",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2100545,
+          22.4133852
+        ]
+      },
+      "properties": {
+        "name": "University",
+        "ref": "UNI",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.198366,
+          22.3953371
+        ]
+      },
+      "properties": {
+        "name": "Fo Tan",
+        "ref": "FOT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1876419,
+          22.3828402
+        ]
+      },
+      "properties": {
+        "name": "Sha Tin",
+        "ref": "SHT",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1785062,
+          22.3731177
+        ]
+      },
+      "properties": {
+        "name": "Tai Wai",
+        "ref": "TAW",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1725869,
+          22.3217126
+        ]
+      },
+      "properties": {
+        "name": "Mong Kok East",
+        "ref": "MKK",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1823066,
+          22.302726
+        ]
+      },
+      "properties": {
+        "name": "Hung Hom",
+        "ref": "HUH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1757015,
+          22.2816654
+        ]
+      },
+      "properties": {
+        "name": "Exhibition Centre",
+        "ref": "EXC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1135146,
+          22.52818
+        ]
+      },
+      "properties": {
+        "name": "Lo Wu",
+        "ref": "LOW",
+        "lines": [
+          "東鐵綫 east rail line",
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2029649,
+          22.4004416
+        ]
+      },
+      "properties": {
+        "name": "Racecourse",
+        "ref": "RAC",
+        "lines": [
+          "港鐵東鐵綫 mtr east rail line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2370517,
+          22.2646033
+        ]
+      },
+      "properties": {
+        "name": "Chai Wan",
+        "ref": "CHW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2397239,
+          22.276619
+        ]
+      },
+      "properties": {
+        "name": "Heng Fa Chuen",
+        "ref": "HFC",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2288177,
+          22.2790834
+        ]
+      },
+      "properties": {
+        "name": "Shau Kei Wan",
+        "ref": "SKW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2222818,
+          22.2816237
+        ]
+      },
+      "properties": {
+        "name": "Sai Wan Ho",
+        "ref": "SWH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2163547,
+          22.2844656
+        ]
+      },
+      "properties": {
+        "name": "Tai Koo",
+        "ref": "TAK",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1934716,
+          22.2875065
+        ]
+      },
+      "properties": {
+        "name": "Fortress Hill",
+        "ref": "FOH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1920333,
+          22.2821958
+        ]
+      },
+      "properties": {
+        "name": "Tin Hau",
+        "ref": "TIH",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1840143,
+          22.2801023
+        ]
+      },
+      "properties": {
+        "name": "Causeway Bay",
+        "ref": "CAB",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1729643,
+          22.2775557
+        ]
+      },
+      "properties": {
+        "name": "Wan Chai",
+        "ref": "WAC",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1521488,
+          22.2865033
+        ]
+      },
+      "properties": {
+        "name": "Sheung Wan",
+        "ref": "SHW",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1427807,
+          22.2854233
+        ]
+      },
+      "properties": {
+        "name": "Sai Ying Pun",
+        "ref": "SYP",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1354563,
+          22.2839642
+        ]
+      },
+      "properties": {
+        "name": "HKU",
+        "ref": "HKU",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.128455,
+          22.2812239
+        ]
+      },
+      "properties": {
+        "name": "Kennedy Town",
+        "ref": "KET",
+        "lines": [
+          "港鐵港島綫 mtr island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0290377,
+          22.3317036
+        ]
+      },
+      "properties": {
+        "name": "Sunny Bay",
+        "ref": "SUN",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵迪士尼綫 mtr disneyland resort line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0451419,
+          22.3155384
+        ]
+      },
+      "properties": {
+        "name": "Disneyland Resort",
+        "ref": "DIS",
+        "lines": [
+          "港鐵迪士尼綫 mtr disneyland resort line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9422192,
+          22.3219972
+        ]
+      },
+      "properties": {
+        "name": "AsiaWorld-Expo",
+        "lines": [
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9366406,
+          22.3158213
+        ]
+      },
+      "properties": {
+        "name": "Airport",
+        "ref": "AIR",
+        "lines": [
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1074211,
+          22.358341
+        ]
+      },
+      "properties": {
+        "name": "Tsing Yi",
+        "ref": "TSY",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1616488,
+          22.3049115
+        ]
+      },
+      "properties": {
+        "name": "Kowloon",
+        "ref": "KOW",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1583655,
+          22.2850161
+        ]
+      },
+      "properties": {
+        "name": "Hong Kong",
+        "ref": "HOK",
+        "lines": [
+          "東涌綫 tung chung line",
+          "機場快綫 airport express"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9413221,
+          22.289278
+        ]
+      },
+      "properties": {
+        "name": "Tung Chung",
+        "ref": "TUC",
+        "lines": [
+          "東涌綫 tung chung line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1536861,
+          22.3263889
+        ]
+      },
+      "properties": {
+        "name": "Nam Cheong",
+        "ref": "NAC",
+        "lines": [
+          "東涌綫 tung chung line",
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1604114,
+          22.317703
+        ]
+      },
+      "properties": {
+        "name": "Olympic",
+        "ref": "OLY",
+        "lines": [
+          "東涌綫 tung chung line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1667055,
+          22.3042568
+        ]
+      },
+      "properties": {
+        "name": "Austin",
+        "ref": "AUS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.174562,
+          22.2953745
+        ]
+      },
+      "properties": {
+        "name": "East Tsim Sha Tsui",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1875853,
+          22.3169878
+        ]
+      },
+      "properties": {
+        "name": "To Kwa Wan",
+        "ref": "TKW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1914117,
+          22.32578
+        ]
+      },
+      "properties": {
+        "name": "Sung Wong Toi",
+        "ref": "SWT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1993964,
+          22.3302386
+        ]
+      },
+      "properties": {
+        "name": "Kai Tak",
+        "ref": "KAT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1707728,
+          22.3638076
+        ]
+      },
+      "properties": {
+        "name": "Hin Keng",
+        "ref": "HIK",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.186095,
+          22.374738
+        ]
+      },
+      "properties": {
+        "name": "Che Kung Temple",
+        "ref": "CKT",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.194839,
+          22.3768367
+        ]
+      },
+      "properties": {
+        "name": "Sha Tin Wai",
+        "ref": "STW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.203784,
+          22.3830131
+        ]
+      },
+      "properties": {
+        "name": "City One",
+        "ref": "CIO",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2085474,
+          22.3877892
+        ]
+      },
+      "properties": {
+        "name": "Shek Mun",
+        "ref": "SHM",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.222844,
+          22.4084544
+        ]
+      },
+      "properties": {
+        "name": "Tai Shui Hang",
+        "ref": "TSH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2259505,
+          22.4178164
+        ]
+      },
+      "properties": {
+        "name": "Heng On",
+        "ref": "HEO",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2318125,
+          22.4247822
+        ]
+      },
+      "properties": {
+        "name": "Ma On Shan",
+        "ref": "MOS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2438864,
+          22.4290802
+        ]
+      },
+      "properties": {
+        "name": "Wu Kai Sha",
+        "ref": "WKS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.2687081,
+          22.2956053
+        ]
+      },
+      "properties": {
+        "name": "LOHAS Park",
+        "ref": "LHP",
+        "lines": [
+          "港鐵將軍澳綫 mtr tseung kwan o line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.174374,
+          22.2486575
+        ]
+      },
+      "properties": {
+        "name": "Ocean Park",
+        "ref": "OCP",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1675294,
+          22.2478045
+        ]
+      },
+      "properties": {
+        "name": "Wong Chuk Hang",
+        "ref": "WCH",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1561054,
+          22.2418706
+        ]
+      },
+      "properties": {
+        "name": "Lei Tung",
+        "ref": "LET",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.149089,
+          22.2423467
+        ]
+      },
+      "properties": {
+        "name": "South Horizons",
+        "ref": "SOH",
+        "lines": [
+          "南港島綫 south island line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9731045,
+          22.3953319
+        ]
+      },
+      "properties": {
+        "name": "Tuen Mun",
+        "ref": "TUM",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.9788763,
+          22.4119477
+        ]
+      },
+      "properties": {
+        "name": "Siu Hong",
+        "ref": "SIH",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0045668,
+          22.4481513
+        ]
+      },
+      "properties": {
+        "name": "Tin Shui Wai",
+        "ref": "TIS",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0254333,
+          22.4477635
+        ]
+      },
+      "properties": {
+        "name": "Long Ping",
+        "ref": "LOP",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0352447,
+          22.4461812
+        ]
+      },
+      "properties": {
+        "name": "Yuen Long",
+        "ref": "YUL",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0634688,
+          22.4348907
+        ]
+      },
+      "properties": {
+        "name": "Kam Sheung Road",
+        "ref": "KSR",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.1099666,
+          22.3683158
+        ]
+      },
+      "properties": {
+        "name": "Tsuen Wan West",
+        "ref": "TWW",
+        "lines": [
+          "港鐵屯馬綫 mtr tuen ma line"
+        ]
+      }
+    }
+  ]
+}
