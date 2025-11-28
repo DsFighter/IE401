@@ -1,6 +1,6 @@
 """
-Multi-Network Metro Resilience Analysis System
-A comprehensive tool for analyzing and comparing multiple metro networks
+Complete Multi-Network Metro Resilience Analysis System
+Enhanced line detection with full analysis capabilities
 """
 
 import json
@@ -12,6 +12,7 @@ import seaborn as sns
 from matplotlib.patches import Circle
 from matplotlib.collections import LineCollection
 from scipy.spatial.distance import cdist
+from collections import defaultdict
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -20,39 +21,61 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 class MetroNetworkAnalyzer:
-    """Main class for metro network analysis"""
+    """Main class for metro network analysis with enhanced line detection"""
     
     def __init__(self, geojson_path, cost_per_km=50000000, network_name="Network"):
-        """Initialize with GeoJSON file path and cost per km
-        
-        Args:
-            geojson_path: Path to GeoJSON file
-            cost_per_km: Cost per kilometer for new connections (default: 50 million per km)
-            network_name: Name identifier for this network
-        """
+        """Initialize with GeoJSON file path and cost per km"""
         self.geojson_path = geojson_path
         self.cost_per_km = cost_per_km
         self.network_name = network_name
         self.G = None
         self.stations = {}
         self.line_colors = {}
+        self.lines_data = {}
         self.load_network()
         
     def load_network(self):
-        """Load GeoJSON and build network graph"""
+        """Load GeoJSON and build network graph with enhanced line detection"""
         with open(self.geojson_path, 'r') as f:
             data = json.load(f)
         
+        print(f"\n{'='*80}")
+        print(f"LOADING NETWORK: {self.network_name}")
+        print(f"{'='*80}")
+        
         self.G = nx.Graph()
         
-        # Extract stations
+        # Step 1: Extract all stations
+        print("\nStep 1: Extracting stations...")
+        self._extract_stations(data)
+        
+        # Step 2: Detect and separate lines
+        print("\nStep 2: Detecting and separating metro lines...")
+        self._detect_and_separate_lines()
+        
+        # Step 3: Build network edges based on line connectivity
+        print("\nStep 3: Building network edges...")
+        self._build_edges()
+        
+        # Step 4: Assign colors to lines
+        print("\nStep 4: Assigning line colors...")
+        self._assign_line_colors()
+        
+        print(f"\n✓ Network loaded successfully!")
+        print(f"  Total Stations: {len(self.stations)}")
+        print(f"  Total Lines: {len(self.lines_data)}")
+        print(f"  Total Edges: {self.G.number_of_edges()}")
+        
+    def _extract_stations(self, data):
+        """Extract stations from GeoJSON"""
+        station_count = 0
+        
         for feature in data['features']:
             if feature['geometry']['type'] == 'Point':
                 coords = feature['geometry']['coordinates']
                 name = feature['properties']['name']
                 lines = feature['properties']['lines']
                 
-                # Handle duplicate station names by making unique identifiers
                 station_id = f"{name}_{coords[0]:.6f}_{coords[1]:.6f}"
                 
                 self.stations[station_id] = {
@@ -67,26 +90,203 @@ class MetroNetworkAnalyzer:
                                name=name,
                                pos=(coords[0], coords[1]),
                                lines=lines)
+                
+                station_count += 1
         
-        # Build edges based on line connectivity
-        self._build_edges()
-        self._assign_line_colors()
+        print(f"  Extracted {station_count} stations")
+    
+    def _detect_and_separate_lines(self):
+        """Detect and separate metro lines with proper ordering"""
+        line_stations = defaultdict(list)
+        
+        for station_id, data in self.stations.items():
+            for line in data['lines']:
+                line_stations[line].append(station_id)
+        
+        print(f"  Found {len(line_stations)} unique lines:")
+        
+        for line_name, stations in line_stations.items():
+            if len(stations) < 2:
+                print(f"    ⚠ {line_name}: Only {len(stations)} station(s) - skipping")
+                continue
+            
+            ordered_stations = self._order_stations_by_proximity(stations)
+            ordered_stations, branches = self._detect_branches(line_name, ordered_stations)
+            
+            self.lines_data[line_name] = {
+                'stations': ordered_stations,
+                'branches': branches,
+                'station_count': len(stations)
+            }
+            
+            branch_info = f" ({len(branches)} branches)" if branches else ""
+            print(f"    ✓ {line_name}: {len(stations)} stations{branch_info}")
+    
+    def _order_stations_by_proximity(self, station_ids):
+        """Order stations using nearest-neighbor approach"""
+        if len(station_ids) <= 2:
+            return station_ids
+        
+        max_min_dist = -1
+        start_station = station_ids[0]
+        
+        for station_id in station_ids:
+            coord = self.stations[station_id]['coords']
+            min_dist_to_others = float('inf')
+            
+            for other_id in station_ids:
+                if station_id != other_id:
+                    other_coord = self.stations[other_id]['coords']
+                    dist = self._haversine_distance(coord, other_coord)
+                    min_dist_to_others = min(min_dist_to_others, dist)
+            
+            if min_dist_to_others > max_min_dist:
+                max_min_dist = min_dist_to_others
+                start_station = station_id
+        
+        ordered = [start_station]
+        remaining = [s for s in station_ids if s != start_station]
+        
+        while remaining:
+            current_coord = self.stations[ordered[-1]]['coords']
+            nearest_dist = float('inf')
+            nearest_station = None
+            
+            for station_id in remaining:
+                station_coord = self.stations[station_id]['coords']
+                dist = self._haversine_distance(current_coord, station_coord)
+                
+                if dist < nearest_dist:
+                    nearest_dist = dist
+                    nearest_station = station_id
+            
+            if nearest_station:
+                ordered.append(nearest_station)
+                remaining.remove(nearest_station)
+            else:
+                ordered.extend(remaining)
+                break
+        
+        return ordered
+    
+    def _detect_branches(self, line_name, ordered_stations):
+        """Detect if a line has branches"""
+        if len(ordered_stations) < 4:
+            return ordered_stations, {}
+        
+        branches = {}
+        
+        for i in range(1, len(ordered_stations) - 1):
+            current_id = ordered_stations[i]
+            current_coord = self.stations[current_id]['coords']
+            
+            distances_ahead = []
+            for j in range(i + 1, len(ordered_stations)):
+                ahead_coord = self.stations[ordered_stations[j]]['coords']
+                dist = self._haversine_distance(current_coord, ahead_coord)
+                distances_ahead.append((ordered_stations[j], dist))
+            
+            if len(distances_ahead) >= 2:
+                distances_ahead.sort(key=lambda x: x[1])
+                
+                if distances_ahead[0][1] > 0:
+                    ratio = distances_ahead[1][1] / distances_ahead[0][1]
+                    if 0.8 <= ratio <= 1.2:
+                        branches[f"branch_{len(branches)+1}"] = {
+                            'junction': current_id,
+                            'stations': [distances_ahead[1][0]]
+                        }
+        
+        return ordered_stations, branches
+    
+    def _build_edges(self):
+        """Build edges between consecutive stations on each line"""
+        total_edges = 0
+        
+        for line_name, line_data in self.lines_data.items():
+            stations = line_data['stations']
+            line_edges = 0
+            
+            for i in range(len(stations) - 1):
+                s1 = stations[i]
+                s2 = stations[i + 1]
+                
+                if (line_name in self.stations[s1]['lines'] and 
+                    line_name in self.stations[s2]['lines']):
+                    
+                    dist = self._haversine_distance(
+                        self.stations[s1]['coords'],
+                        self.stations[s2]['coords']
+                    )
+                    
+                    if not self.G.has_edge(s1, s2):
+                        self.G.add_edge(s1, s2, weight=dist, line=line_name)
+                        line_edges += 1
+                    else:
+                        existing_line = self.G[s1][s2].get('line', '')
+                        if line_name not in existing_line:
+                            self.G[s1][s2]['line'] = f"{existing_line},{line_name}"
+            
+            for branch_name, branch_data in line_data['branches'].items():
+                junction = branch_data['junction']
+                for branch_station in branch_data['stations']:
+                    if not self.G.has_edge(junction, branch_station):
+                        dist = self._haversine_distance(
+                            self.stations[junction]['coords'],
+                            self.stations[branch_station]['coords']
+                        )
+                        self.G.add_edge(junction, branch_station, 
+                                      weight=dist, line=line_name)
+                        line_edges += 1
+            
+            total_edges += line_edges
+            print(f"    {line_name}: {line_edges} edges added")
+        
+        interchange_edges = self._add_interchange_connections()
+        total_edges += interchange_edges
+        
+        print(f"  Total edges created: {total_edges}")
+    
+    def _add_interchange_connections(self):
+        """Add connections between interchange stations"""
+        station_names = defaultdict(list)
+        interchange_count = 0
+        
+        for station_id, data in self.stations.items():
+            name = data['name']
+            station_names[name].append(station_id)
+        
+        for name, station_list in station_names.items():
+            if len(station_list) > 1:
+                for i in range(len(station_list)):
+                    for j in range(i + 1, len(station_list)):
+                        s1, s2 = station_list[i], station_list[j]
+                        
+                        if not self.G.has_edge(s1, s2):
+                            dist = self._haversine_distance(
+                                self.stations[s1]['coords'],
+                                self.stations[s2]['coords']
+                            )
+                            
+                            if dist < 0.5:
+                                self.G.add_edge(s1, s2, weight=0.01, line='interchange')
+                                interchange_count += 1
+        
+        if interchange_count > 0:
+            print(f"    interchange: {interchange_count} connections added")
+        
+        return interchange_count
         
     def _assign_line_colors(self):
         """Assign unique colors to each metro line"""
-        # Collect all unique lines
-        all_lines = set()
-        for station_data in self.stations.values():
-            all_lines.update(station_data['lines'])
+        all_lines = set(self.lines_data.keys())
         
-        # Define color palette
         color_palette = [
             '#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6',
             '#ec4899', '#06b6d4', '#f97316', '#14b8a6', '#a855f7',
             '#84cc16', '#6366f1', '#f43f5e', '#0ea5e9', '#22c55e',
         ]
         
-        # Assign colors to lines
         for i, line in enumerate(sorted(all_lines)):
             if line == 'interchange':
                 self.line_colors[line] = '#64748b'
@@ -94,95 +294,13 @@ class MetroNetworkAnalyzer:
                 self.line_colors[line] = '#10b981'
             else:
                 self.line_colors[line] = color_palette[i % len(color_palette)]
-        
-    def _build_edges(self):
-        """Build edges between consecutive stations on same line - line-based connectivity only"""
-        # Group stations by line
-        line_stations = {}
-        for station_id, data in self.stations.items():
-            for line in data['lines']:
-                if line not in line_stations:
-                    line_stations[line] = []
-                line_stations[line].append(station_id)
-        
-        # Connect stations on same line in sequential order
-        for line, stations in line_stations.items():
-            if len(stations) < 2:
-                continue
-            
-            # Get coordinates for all stations on this line
-            station_coords = [(s, self.stations[s]['coords']) for s in stations]
-            
-            # Sort stations by their position along the line
-            # Use a combination of longitude and latitude for sorting
-            station_coords.sort(key=lambda x: (x[1][0], x[1][1]))
-            sorted_stations = [s[0] for s in station_coords]
-            
-            # Connect consecutive stations ONLY
-            for i in range(len(sorted_stations) - 1):
-                s1, s2 = sorted_stations[i], sorted_stations[i + 1]
-                
-                # Double-check both stations have this line
-                if (line in self.stations[s1]['lines'] and 
-                    line in self.stations[s2]['lines']):
-                    
-                    dist = self._haversine_distance(
-                        self.stations[s1]['coords'],
-                        self.stations[s2]['coords']
-                    )
-                    
-                    # Only add edge if it doesn't exist or if it's for a different line
-                    if not self.G.has_edge(s1, s2):
-                        self.G.add_edge(s1, s2, weight=dist, line=line)
-                    else:
-                        # If edge exists, it might be for another shared line
-                        # Keep the existing edge but note the additional line
-                        existing_line = self.G[s1][s2].get('line', '')
-                        if existing_line != line:
-                            self.G[s1][s2]['line'] = f"{existing_line},{line}"
-        
-        # Connect interchange stations (stations with same name at same location)
-        station_names = {}
-        for station_id, data in self.stations.items():
-            name = data['name']
-            if name not in station_names:
-                station_names[name] = []
-            station_names[name].append(station_id)
-        
-        for name, station_list in station_names.items():
-            if len(station_list) > 1:
-                # Only connect if they share at least one common line OR are true interchanges
-                for i in range(len(station_list)):
-                    for j in range(i + 1, len(station_list)):
-                        s1, s2 = station_list[i], station_list[j]
-                        
-                        # Check if they share any common lines
-                        lines1 = set(self.stations[s1]['lines'])
-                        lines2 = set(self.stations[s2]['lines'])
-                        common_lines = lines1.intersection(lines2)
-                        
-                        # Connect if they share lines OR are different locations (true interchange)
-                        dist = self._haversine_distance(
-                            self.stations[s1]['coords'],
-                            self.stations[s2]['coords']
-                        )
-                        
-                        # If same location but different lines = interchange
-                        # If different locations = branch on same line
-                        if dist < 0.1:  # Same location (within 100m)
-                            if not self.G.has_edge(s1, s2):
-                                self.G.add_edge(s1, s2, weight=0.01, line='interchange')
-                        elif len(common_lines) > 0:
-                            # They share lines and are different locations
-                            # This edge should already exist from line processing above
-                            pass
     
     def _haversine_distance(self, coord1, coord2):
         """Calculate distance between two coordinates in km"""
         lon1, lat1 = coord1
         lon2, lat2 = coord2
         
-        R = 6371  # Earth's radius in km
+        R = 6371
         
         phi1, phi2 = np.radians(lat1), np.radians(lat2)
         dphi = np.radians(lat2 - lat1)
@@ -192,6 +310,20 @@ class MetroNetworkAnalyzer:
         c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1-a))
         
         return R * c
+    
+    def get_line_summary(self):
+        """Get summary of all detected lines"""
+        summary = []
+        
+        for line_name, line_data in self.lines_data.items():
+            summary.append({
+                'Line': line_name,
+                'Stations': line_data['station_count'],
+                'Branches': len(line_data['branches']),
+                'Color': self.line_colors.get(line_name, 'N/A')
+            })
+        
+        return pd.DataFrame(summary)
     
     def calculate_centralities(self):
         """Calculate betweenness, closeness, and degree centrality"""
@@ -258,115 +390,69 @@ class MetroNetworkAnalyzer:
     
     def plot_network(self, criticality=None, title="Metro Network", 
                     removed_nodes=None, filename=None, figsize=(16, 12),
-                    node_size=80, flip_axes=False, added_edges=None, color_code_lines=False):
-        """Plot network with aesthetic heatmap of criticality and color-coded lines
-        
-        Args:
-            node_size: Size of node dots (default: 80, smaller = 50-60, larger = 100-150)
-            flip_axes: If True, swaps x and y axes to rotate the plot
-            added_edges: List of tuples (u, v) representing newly added edges (drawn in green)
-            color_code_lines: If True, color code lines uniquely; if False, use uniform gray
-        """
+                    node_size=80, flip_axes=False, added_edges=None, 
+                    color_code_lines=True):
+        """Plot network with line visualization"""
         fig, ax = plt.subplots(figsize=figsize, facecolor='white')
         ax.set_facecolor('white')
         
-        # Get positions from ALL stations (not just current graph nodes)
         pos = {}
         for station_id, station_data in self.stations.items():
             pos[station_id] = (station_data['coords'][0], station_data['coords'][1])
         
-        # Get criticality values
         if criticality is None:
             criticality = self.calculate_criticality()
         
         node_colors = [criticality.get(node, 0) for node in self.G.nodes()]
         
-        # Group edges by line for color coding - STRICT LINE CHECKING
-        edges_by_line = {}
+        # Draw edges by line
+        edges_by_line = defaultdict(list)
+        
         for u, v, data in self.G.edges(data=True):
             line = data.get('line', 'unknown')
             
-            # Verify this edge connects stations on the correct line
-            if ',' in line:  # Multiple lines share this edge
+            if ',' in line:
                 lines = line.split(',')
                 for single_line in lines:
-                    if single_line not in edges_by_line:
-                        edges_by_line[single_line] = []
                     if u in pos and v in pos:
-                        if flip_axes:
-                            edge_coord = [(pos[u][1], pos[u][0]), (pos[v][1], pos[v][0])]
-                        else:
-                            edge_coord = [pos[u], pos[v]]
+                        edge_coord = self._get_edge_coords(pos, u, v, flip_axes)
                         edges_by_line[single_line].append(edge_coord)
             else:
-                # Single line edge - verify both stations have this line
-                u_lines = self.stations[u]['lines'] if u in self.stations else []
-                v_lines = self.stations[v]['lines'] if v in self.stations else []
-                
-                # For resilience and interchange, don't check station lines
-                if line.startswith('resilience') or line == 'interchange':
-                    if line not in edges_by_line:
-                        edges_by_line[line] = []
-                    if u in pos and v in pos:
-                        if flip_axes:
-                            edge_coord = [(pos[u][1], pos[u][0]), (pos[v][1], pos[v][0])]
-                        else:
-                            edge_coord = [pos[u], pos[v]]
-                        edges_by_line[line].append(edge_coord)
-                # For regular lines, verify both stations are on this line
-                elif line in u_lines and line in v_lines:
-                    if line not in edges_by_line:
-                        edges_by_line[line] = []
-                    if u in pos and v in pos:
-                        if flip_axes:
-                            edge_coord = [(pos[u][1], pos[u][0]), (pos[v][1], pos[v][0])]
-                        else:
-                            edge_coord = [pos[u], pos[v]]
-                        edges_by_line[line].append(edge_coord)
-                else:
-                    # Edge exists but stations don't share this line - shouldn't happen
-                    print(f"⚠ Warning: Edge {u}-{v} labeled as line '{line}' but stations don't share it")
+                if u in pos and v in pos:
+                    edge_coord = self._get_edge_coords(pos, u, v, flip_axes)
+                    edges_by_line[line].append(edge_coord)
         
-        # Track added edges
-        added_edges_set = set()
-        if added_edges:
-            for u, v in added_edges:
-                added_edges_set.add((u, v))
-                added_edges_set.add((v, u))
-        
-        # Draw edges by line with unique colors
         legend_elements = []
         for line, edge_coords in edges_by_line.items():
             if not edge_coords:
                 continue
             
-            # Check if this line contains added edges
-            is_resilience_line = line.startswith('resilience')
+            is_resilience = line.startswith('resilience')
             
-            if is_resilience_line:
-                # Draw resilience edges in green
-                lc = LineCollection(edge_coords, colors=self.line_colors.get(line, '#10b981'), 
-                                  linewidths=3.5, alpha=0.9, zorder=2,
-                                  linestyles='solid', label=line.replace('_', ' ').title())
+            if is_resilience:
+                color = '#10b981'
+                width = 3.5
+                alpha = 0.9
+            elif color_code_lines:
+                color = self.line_colors.get(line, '#64748b')
+                width = 2.5
+                alpha = 0.7
             else:
-                # Determine edge color based on color_code_lines toggle
-                if color_code_lines:
-                    edge_color = self.line_colors.get(line, '#64748b')
-                else:
-                    edge_color = '#64748b'  # Uniform gray for all lines
-                
-                # Draw regular edges
-                lc = LineCollection(edge_coords, colors=edge_color, 
-                                  linewidths=2.5, alpha=0.7, zorder=1, label=line)
+                color = '#64748b'
+                width = 2.5
+                alpha = 0.7
+            
+            lc = LineCollection(edge_coords, colors=color, 
+                              linewidths=width, alpha=alpha,
+                              zorder=2 if is_resilience else 1)
             ax.add_collection(lc)
             
-            # Add to legend (skip interchange and resilience for cleaner legend)
-            if color_code_lines and line != 'interchange' and not is_resilience_line:
+            if color_code_lines and line != 'interchange' and not is_resilience:
                 from matplotlib.lines import Line2D
-                legend_elements.append(Line2D([0], [0], color=self.line_colors.get(line, '#64748b'), 
+                legend_elements.append(Line2D([0], [0], color=color, 
                                              linewidth=3, label=line))
         
-        # Draw nodes with heatmap (only active nodes in the graph)
+        # Draw nodes
         active_nodes = list(self.G.nodes())
         if flip_axes:
             node_positions = np.array([[pos[node][1], pos[node][0]] for node in active_nodes])
@@ -378,7 +464,7 @@ class MetroNetworkAnalyzer:
                            edgecolors='#1e293b', linewidths=1.5,
                            alpha=0.9, zorder=3)
         
-        # Draw removed nodes in green (these are NOT in the graph anymore)
+        # Draw removed nodes
         if removed_nodes:
             removed_nodes_list = [node for node in removed_nodes if node in pos]
             if len(removed_nodes_list) > 0:
@@ -388,13 +474,11 @@ class MetroNetworkAnalyzer:
                 else:
                     removed_pos = np.array([pos[node] for node in removed_nodes_list])
                 
-                # Draw removed nodes in green
                 ax.scatter(removed_pos[:, 0], removed_pos[:, 1],
                          s=node_size, c='#10b981', 
                          edgecolors='#1e293b', linewidths=1.5,
                          alpha=0.9, zorder=6)
                 
-                # Add to legend
                 from matplotlib.lines import Line2D
                 legend_elements.append(Line2D([0], [0], marker='o', color='w', 
                                              markerfacecolor='#10b981', markersize=8,
@@ -402,18 +486,15 @@ class MetroNetworkAnalyzer:
                                              linestyle='None',
                                              label='Removed Nodes'))
         
-        # Add resilience lines to legend if present
         if added_edges:
             from matplotlib.lines import Line2D
             legend_elements.append(Line2D([0], [0], color='#10b981', linewidth=3,
                                          label='Resilience Links'))
         
-        # Add colorbar
         cbar = plt.colorbar(scatter, ax=ax, fraction=0.046, pad=0.04)
         cbar.set_label('Criticality Score', fontsize=14, color='#1e293b', weight='bold')
         cbar.ax.tick_params(labelsize=11, colors='#1e293b')
         
-        # Styling
         ax.set_title(title, fontsize=20, weight='bold', color='#1e293b', pad=20)
         
         if flip_axes:
@@ -426,12 +507,10 @@ class MetroNetworkAnalyzer:
         ax.tick_params(colors='#1e293b', labelsize=11)
         ax.grid(True, alpha=0.3, color='#cbd5e1', linestyle='--')
         
-        # Spine styling
         for spine in ax.spines.values():
             spine.set_edgecolor('#475569')
             spine.set_linewidth(1.5)
         
-        # Add legend
         if legend_elements:
             ax.legend(handles=legend_elements, loc='lower left', 
                      fontsize=11, framealpha=0.95, edgecolor='#475569',
@@ -446,14 +525,16 @@ class MetroNetworkAnalyzer:
             print(f"✓ Saved plot: {filename}")
         
         plt.show()
-        
+    
+    def _get_edge_coords(self, pos, u, v, flip_axes):
+        """Get edge coordinates with optional axis flipping"""
+        if flip_axes:
+            return [(pos[u][1], pos[u][0]), (pos[v][1], pos[v][0])]
+        else:
+            return [pos[u], pos[v]]
+    
     def attack_critical_nodes(self, top_k=3, color_code_lines=False):
-        """Simulate targeted attack by removing top critical nodes
-        
-        Args:
-            top_k: Number of top critical nodes to remove
-            color_code_lines: If True, color code lines in plots; if False, use uniform gray
-        """
+        """Simulate targeted attack by removing top critical nodes"""
         criticality = self.calculate_criticality()
         sorted_nodes = sorted(criticality.items(), key=lambda x: x[1], reverse=True)
         
@@ -471,10 +552,8 @@ class MetroNetworkAnalyzer:
             node, crit_score = sorted_nodes[i]
             removed_nodes.append(node)
             
-            # Remove node
             self.G.remove_node(node)
             
-            # Calculate new efficiency
             new_efficiency = self.calculate_efficiency()
             efficiency_drop = ((original_efficiency - new_efficiency) / 
                              original_efficiency * 100)
@@ -492,7 +571,6 @@ class MetroNetworkAnalyzer:
             print(f"  New Efficiency: {new_efficiency:.6f}")
             print(f"  Efficiency Drop: {efficiency_drop:.2f}%")
             
-            # Plot after each removal
             self.plot_network(
                 criticality=criticality,
                 title=f"Network After Removing {i+1} Critical Node(s)",
@@ -503,18 +581,12 @@ class MetroNetworkAnalyzer:
                 color_code_lines=color_code_lines
             )
         
-        # Restore graph
         self.G = G_copy
         
         return pd.DataFrame(results)
     
     def attack_radius(self, radius_km=2.0, color_code_lines=False):
-        """Attack by removing all nodes within radius of most critical node
-        
-        Args:
-            radius_km: Radius in kilometers around the most critical node
-            color_code_lines: If True, color code lines in plots; if False, use uniform gray
-        """
+        """Attack by removing all nodes within radius of most critical node"""
         criticality = self.calculate_criticality()
         most_critical = max(criticality.items(), key=lambda x: x[1])
         most_critical_node = most_critical[0]
@@ -525,7 +597,6 @@ class MetroNetworkAnalyzer:
         print(f"Most Critical Node: {self.stations[most_critical_node]['name']}")
         print(f"Criticality Score: {most_critical[1]:.6f}")
         
-        # Find nodes within radius
         center_coords = self.stations[most_critical_node]['coords']
         nodes_to_remove = []
         
@@ -544,7 +615,6 @@ class MetroNetworkAnalyzer:
         G_copy = self.G.copy()
         original_efficiency = self.calculate_efficiency()
         
-        # Remove nodes
         for node in nodes_to_remove:
             self.G.remove_node(node)
         
@@ -556,7 +626,6 @@ class MetroNetworkAnalyzer:
         print(f"New Efficiency: {new_efficiency:.6f}")
         print(f"Efficiency Drop: {efficiency_drop:.2f}%")
         
-        # Plot
         self.plot_network(
             criticality=criticality,
             title=f"Radius Attack ({radius_km}km around most critical node)",
@@ -576,16 +645,12 @@ class MetroNetworkAnalyzer:
             'efficiency_drop_%': efficiency_drop
         }
         
-        # Restore graph
         self.G = G_copy
         
         return result
     
     def add_resilience_lines(self, k=2):
-        """Add alternate paths connecting k-th critical nodes to most critical nodes
-        
-        IMPORTANT: Only connects stations that share the same metro line
-        """
+        """Add alternate paths connecting k-th critical nodes to most critical nodes"""
         criticality = self.calculate_criticality()
         
         line_nodes = {}
@@ -606,7 +671,6 @@ class MetroNetworkAnalyzer:
             if len(nodes) < k + 1:
                 continue
             
-            # Get criticality for nodes on this line only
             line_criticality = {n: criticality[n] for n in nodes}
             sorted_line_nodes = sorted(line_criticality.items(), 
                                       key=lambda x: x[1], reverse=True)
@@ -614,35 +678,27 @@ class MetroNetworkAnalyzer:
             if len(sorted_line_nodes) <= k:
                 continue
             
-            # Get k-th most critical node on this line
             kth_critical_node = sorted_line_nodes[k-1][0]
             most_critical_node = sorted_line_nodes[0][0]
             
-            # Get all lines of the most critical node
             most_critical_lines = self.stations[most_critical_node]['lines']
             
-            # Find the best connection on a DIFFERENT line that the most critical node is on
             for target_line in most_critical_lines:
-                # Skip if it's the same line
                 if target_line == line or target_line == 'interchange':
                     continue
                 
                 if target_line not in line_nodes:
                     continue
                 
-                # Find nearest node on target line
                 min_dist = float('inf')
                 nearest_node = None
                 
                 kth_coords = self.stations[kth_critical_node]['coords']
                 
-                # Only consider nodes that are actually ON the target line
                 for target_node in line_nodes[target_line]:
-                    # Verify the target node has the target line
                     if target_line not in self.stations[target_node]['lines']:
                         continue
                     
-                    # Skip if edge already exists
                     if self.G.has_edge(kth_critical_node, target_node):
                         continue
                     
@@ -655,9 +711,7 @@ class MetroNetworkAnalyzer:
                         min_dist = dist
                         nearest_node = target_node
                 
-                # Add resilience edge if valid connection found
                 if nearest_node and not self.G.has_edge(kth_critical_node, nearest_node):
-                    # Verify both nodes are on their respective lines
                     kth_lines = self.stations[kth_critical_node]['lines']
                     nearest_lines = self.stations[nearest_node]['lines']
                     
@@ -666,11 +720,9 @@ class MetroNetworkAnalyzer:
                                        weight=min_dist, line=f'resilience_{k}')
                         new_edges.append((kth_critical_node, nearest_node))
                         
-                        # Calculate cost for this edge
                         edge_cost = min_dist * self.cost_per_km
                         total_cost += edge_cost
                         
-                        # Store in breakdown
                         kth_node_info = f"{self.stations[kth_critical_node]['name']} ({line})"
                         nearest_node_info = f"{self.stations[nearest_node]['name']} ({target_line})"
                         edge_name = f"{kth_node_info} → {nearest_node_info}"
@@ -692,21 +744,15 @@ class MetroNetworkAnalyzer:
         return new_edges, total_cost, cost_breakdown
     
     def compare_networks(self, color_code_lines=False):
-        """Compare original and resilience-enhanced networks
-        
-        Args:
-            color_code_lines: If True, color code lines in plots; if False, use uniform gray
-        """
+        """Compare original and resilience-enhanced networks"""
         print(f"\n{'='*60}")
         print("NETWORK COMPARISON")
         print(f"{'='*60}")
         
-        # Original network metrics
         G_original = self.G.copy()
         criticality_original = self.calculate_criticality()
         efficiency_original = self.calculate_efficiency()
         
-        # Calculate robustness for original (sample paths)
         sample_nodes = list(self.G.nodes())[:min(10, len(self.G.nodes()))]
         original_paths = []
         for i in range(len(sample_nodes)):
@@ -716,7 +762,7 @@ class MetroNetworkAnalyzer:
                                                       sample_nodes[i], 
                                                       sample_nodes[j], 
                                                       weight='weight'))
-                    original_paths.extend(paths[:3])  # Take up to 3 paths
+                    original_paths.extend(paths[:3])
                 except:
                     pass
         
@@ -860,7 +906,7 @@ class MetroNetworkAnalyzer:
         networks = ['Original'] + [r['network'] for r in results]
         efficiencies = [eff_orig] + [r['efficiency'] for r in results]
         robustness = [rob_orig] + [r['robustness'] for r in results]
-        costs = [0] + [r['total_cost']/1e6 for r in results]  # Convert to millions
+        costs = [0] + [r['total_cost']/1e6 for r in results]
         
         colors = ['#3b82f6', '#10b981', '#f59e0b']
         
@@ -879,7 +925,6 @@ class MetroNetworkAnalyzer:
             spine.set_edgecolor('#475569')
             spine.set_linewidth(1.5)
         
-        # Add value labels
         for bar in bars1:
             height = bar.get_height()
             ax1.text(bar.get_x() + bar.get_width()/2., height,
@@ -901,7 +946,6 @@ class MetroNetworkAnalyzer:
             spine.set_edgecolor('#475569')
             spine.set_linewidth(1.5)
         
-        # Add value labels
         for bar in bars2:
             height = bar.get_height()
             ax2.text(bar.get_x() + bar.get_width()/2., height,
@@ -923,14 +967,13 @@ class MetroNetworkAnalyzer:
             spine.set_edgecolor('#475569')
             spine.set_linewidth(1.5)
         
-        # Add value labels
         for bar in bars3:
             height = bar.get_height()
             ax3.text(bar.get_x() + bar.get_width()/2., height,
                     f'${height:.1f}M', ha='center', va='bottom',
                     color='#1e293b', fontsize=11, weight='bold')
         
-        # Cost-Benefit Analysis (Cost per efficiency gain)
+        # Cost-Benefit Analysis
         ax4 = axes[1, 1]
         ax4.set_facecolor('white')
         
@@ -938,7 +981,7 @@ class MetroNetworkAnalyzer:
         cb_networks = []
         for i, result in enumerate(results):
             if result['cost_per_efficiency_gain'] != float('inf'):
-                cost_benefit.append(result['cost_per_efficiency_gain']/1e6)  # Convert to millions
+                cost_benefit.append(result['cost_per_efficiency_gain']/1e6)
                 cb_networks.append(result['network'])
         
         if cost_benefit:
@@ -956,7 +999,6 @@ class MetroNetworkAnalyzer:
                 spine.set_edgecolor('#475569')
                 spine.set_linewidth(1.5)
             
-            # Add value labels
             for bar in bars4:
                 height = bar.get_height()
                 ax4.text(bar.get_x() + bar.get_width()/2., height,
@@ -980,7 +1022,6 @@ class MetroNetworkAnalyzer:
         criticality = self.calculate_criticality()
         efficiency = self.calculate_efficiency()
         
-        # Calculate robustness
         sample_nodes = list(self.G.nodes())[:min(10, len(self.G.nodes()))]
         paths = []
         for i in range(len(sample_nodes)):
@@ -1045,7 +1086,6 @@ class MultiNetworkComparator:
         df = pd.DataFrame(results)
         print("\n" + df.to_string(index=False))
         
-        # Create comparison visualizations
         self._plot_baseline_comparison(df)
         
         return df
@@ -1063,7 +1103,6 @@ class MultiNetworkComparator:
             print(f"Analyzing {analyzer.network_name}")
             print(f"{'-'*80}")
             
-            # Get original metrics
             G_original = analyzer.G.copy()
             original_metrics = analyzer.get_metrics()
             
@@ -1074,7 +1113,6 @@ class MultiNetworkComparator:
                 'Original_Avg_Criticality': original_metrics['avg_criticality']
             }
             
-            # Test each k value
             for k in k_values:
                 analyzer.G = G_original.copy()
                 new_edges, cost, breakdown = analyzer.add_resilience_lines(k=k)
@@ -1109,13 +1147,11 @@ class MultiNetworkComparator:
                 print(f"  Robustness Improvement: {rob_improvement:+.2f}%")
                 print(f"  Criticality Reduction: {crit_reduction:+.2f}%")
             
-            # Restore original
             analyzer.G = G_original
             all_results.append(network_results)
         
         df = pd.DataFrame(all_results)
         
-        # Create comprehensive comparison visualizations
         self._plot_resilience_comparison(df, k_values)
         
         return df
@@ -1151,7 +1187,6 @@ class MultiNetworkComparator:
                 spine.set_edgecolor('#475569')
                 spine.set_linewidth(1.5)
             
-            # Add value labels
             for bar in bars:
                 height = bar.get_height()
                 ax.text(bar.get_x() + bar.get_width()/2., height,
@@ -1167,7 +1202,7 @@ class MultiNetworkComparator:
     
     def _plot_resilience_comparison(self, df, k_values):
         """Create comprehensive resilience comparison charts"""
-        n_metrics = 4  # Efficiency, Robustness, Criticality, Cost
+        n_metrics = 4
         fig, axes = plt.subplots(n_metrics, len(k_values), 
                                 figsize=(10*len(k_values), 16), facecolor='white')
         fig.suptitle('Resilience Strategy Comparison Across Networks', 
@@ -1283,7 +1318,6 @@ class MultiNetworkComparator:
         print("✓ Saved: multi_network_resilience_comparison.png")
         plt.show()
         
-        # Create cost-benefit analysis chart
         self._plot_cost_benefit_analysis(df, k_values)
     
     def _plot_cost_benefit_analysis(self, df, k_values):
@@ -1302,7 +1336,6 @@ class MultiNetworkComparator:
             ax = axes[k_idx]
             ax.set_facecolor('white')
             
-            # Filter out infinite values
             valid_data = df[df[f'k{k}_Cost_Per_Eff_Gain_M'] != float('inf')]
             
             if len(valid_data) > 0:
@@ -1339,22 +1372,140 @@ class MultiNetworkComparator:
 
 
 def main():
-    """Main execution function for multi-network comparison"""
+    """Main execution function"""
     
     print("="*80)
-    print("MULTI-NETWORK METRO RESILIENCE ANALYSIS")
+    print("METRO NETWORK RESILIENCE ANALYSIS SYSTEM")
+    print("="*80)
+    print("\nChoose analysis mode:")
+    print("  1. Single Network Analysis (complete with all features)")
+    print("  2. Multi-Network Comparison")
+    
+    # For demonstration, we'll show single network analysis
+    # You can modify this to add user input or command-line arguments
+    
+    mode = 1  # Change to 2 for multi-network comparison
+    
+    if mode == 1:
+        analyze_single_network()
+    else:
+        analyze_multiple_networks()
+
+
+def analyze_single_network(geojson_path="../Hong_kong_analysis/hk_metro_station.geojson", 
+                          network_name="Delhi Metro", 
+                          cost_per_km=50000000):
+    """Perform complete single network analysis"""
+    
+    print("\n" + "="*80)
+    print(f"SINGLE NETWORK ANALYSIS: {network_name}")
+    print("="*80)
+    
+    try:
+        # Load network
+        analyzer = MetroNetworkAnalyzer(geojson_path, cost_per_km, network_name)
+        
+        # Display line summary
+        print("\n" + "="*80)
+        print("LINE SUMMARY")
+        print("="*80)
+        line_summary = analyzer.get_line_summary()
+        print(line_summary.to_string(index=False))
+        
+        # Get baseline metrics
+        print("\n" + "="*80)
+        print("BASELINE METRICS")
+        print("="*80)
+        
+        metrics = analyzer.get_metrics()
+        print(f"\nNetwork Statistics:")
+        print(f"  Nodes: {metrics['nodes']}")
+        print(f"  Edges: {metrics['edges']}")
+        print(f"  Efficiency: {metrics['efficiency']:.6f}")
+        print(f"  Robustness: {metrics['robustness']:.6f}")
+        print(f"  Average Criticality: {metrics['avg_criticality']:.6f}")
+        print(f"  Maximum Criticality: {metrics['max_criticality']:.6f}")
+        
+        # Show top critical nodes
+        criticality = metrics['criticality']
+        top_critical = sorted(criticality.items(), key=lambda x: x[1], reverse=True)[:10]
+        print("\nTop 10 Critical Nodes:")
+        for i, (node, score) in enumerate(top_critical, 1):
+            print(f"{i:2d}. {analyzer.stations[node]['name']:30s} - {score:.6f}")
+        
+        # Plot original network
+        print("\n" + "="*80)
+        print("VISUALIZING ORIGINAL NETWORK")
+        print("="*80)
+        analyzer.plot_network(
+            criticality, 
+            title=f"{network_name} - Criticality Heatmap",
+            filename="original_network.png",
+            node_size=80,
+            flip_axes=False,
+            color_code_lines=True
+        )
+        
+        # Test resilience strategies
+        print("\n" + "="*80)
+        print("TESTING RESILIENCE STRATEGIES")
+        print("="*80)
+        
+        results = analyzer.compare_networks(color_code_lines=True)
+        
+        # Optional: Run attack simulations
+        print("\n" + "="*80)
+        print("ATTACK SIMULATIONS")
+        print("="*80)
+        
+        # Targeted attack
+        print("\n--- Targeted Attack ---")
+        attack_results = analyzer.attack_critical_nodes(top_k=3, color_code_lines=True)
+        print("\nAttack Results:")
+        print(attack_results.to_string(index=False))
+        
+        # Radius attack
+        print("\n--- Radius Attack ---")
+        radius_result = analyzer.attack_radius(radius_km=2.0, color_code_lines=True)
+        
+        print("\n" + "="*80)
+        print("ANALYSIS COMPLETE!")
+        print("="*80)
+        print("\nGenerated Files:")
+        print("  • original_network.png - Original network visualization")
+        print("  • network_resilience_k2.png - k=2 resilience strategy")
+        print("  • network_resilience_k3.png - k=3 resilience strategy")
+        print("  • network_comparison.png - Comparison charts")
+        print("  • attack_step_1.png, attack_step_2.png, attack_step_3.png")
+        print("  • radius_attack_2.0km.png")
+        
+        return analyzer
+        
+    except FileNotFoundError:
+        print(f"\n❌ Error: File '{geojson_path}' not found!")
+        print("Please ensure the GeoJSON file exists in the current directory.")
+    except Exception as e:
+        print(f"\n❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+
+
+def analyze_multiple_networks():
+    """Perform multi-network comparison analysis"""
+    
+    print("\n" + "="*80)
+    print("MULTI-NETWORK COMPARISON ANALYSIS")
     print("="*80)
     
     # Initialize comparator
     comparator = MultiNetworkComparator()
     
     # Add networks (replace with your actual GeoJSON files)
-    # Example: Three different metro networks
     network_configs = [
         {
             'geojson_path': 'network1_metro_stations.geojson',
             'network_name': 'Network 1',
-            'cost_per_km': 50000000  # $50M per km
+            'cost_per_km': 50000000
         },
         {
             'geojson_path': 'network2_metro_stations.geojson',
@@ -1420,85 +1571,9 @@ def main():
     print("  • multi_network_cost_benefit.png")
     
     print("\n" + "="*80)
-    print("Analysis Complete!")
+    print("ANALYSIS COMPLETE!")
     print("="*80)
-
-
-# Alternative: Single network analysis (original functionality)
-def analyze_single_network(geojson_path, network_name="Metro Network", cost_per_km=50000000):
-    """Analyze a single metro network with full details"""
-    
-    print("="*80)
-    print(f"SINGLE NETWORK ANALYSIS: {network_name}")
-    print("="*80)
-    
-    analyzer = MetroNetworkAnalyzer(geojson_path, cost_per_km, network_name)
-    
-    print(f"\nNetwork Statistics:")
-    print(f"  Nodes: {analyzer.G.number_of_nodes()}")
-    print(f"  Edges: {analyzer.G.number_of_edges()}")
-    print(f"  Cost per km: ${cost_per_km:,.2f}")
-    
-    # Get baseline metrics
-    print("\n" + "="*80)
-    print("Baseline Metrics")
-    print("="*80)
-    
-    metrics = analyzer.get_metrics()
-    print(f"\nEfficiency: {metrics['efficiency']:.6f}")
-    print(f"Robustness: {metrics['robustness']:.6f}")
-    print(f"Average Criticality: {metrics['avg_criticality']:.6f}")
-    print(f"Maximum Criticality: {metrics['max_criticality']:.6f}")
-    
-    # Show top critical nodes
-    criticality = metrics['criticality']
-    top_critical = sorted(criticality.items(), key=lambda x: x[1], reverse=True)[:10]
-    print("\nTop 10 Critical Nodes:")
-    for i, (node, score) in enumerate(top_critical, 1):
-        print(f"{i:2d}. {analyzer.stations[node]['name']:30s} - {score:.6f}")
-    
-    # Plot original network
-    analyzer.plot_network(criticality, 
-                         title=f"{network_name} - Criticality Heatmap",
-                         filename="original_network.png",
-                         node_size=80,
-                         flip_axes=False,
-                         color_code_lines=False)
-    
-    # Test resilience strategies
-    print("\n" + "="*80)
-    print("Testing Resilience Strategies")
-    print("="*80)
-    
-    results = analyzer.compare_networks(color_code_lines=False)
-    
-    # Optional: Run attack simulations
-    print("\n" + "="*80)
-    print("Running Attack Simulations (Optional)")
-    print("="*80)
-    
-    attack_results = analyzer.attack_critical_nodes(top_k=3, color_code_lines=False)
-    print("\nAttack Results:")
-    print(attack_results.to_string(index=False))
-    
-    radius_result = analyzer.attack_radius(radius_km=2.0, color_code_lines=False)
-    
-    print("\n" + "="*80)
-    print("Analysis Complete!")
-    print("="*80)
-    
-    return analyzer
 
 
 if __name__ == "__main__":
-    # Choose analysis mode
-    import sys
-    
-    if len(sys.argv) > 1 and sys.argv[1] == '--single':
-        # Single network analysis
-        geojson_path = sys.argv[2] if len(sys.argv) > 2 else "delhi_metro_stations.geojson"
-        network_name = sys.argv[3] if len(sys.argv) > 3 else "Metro Network"
-        analyze_single_network(geojson_path, network_name)
-    else:
-        # Multi-network comparison (default)
-        main()
+    main()
